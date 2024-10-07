@@ -12,7 +12,7 @@ public class AircraftEngine : ControllableBehaviour
 		rb = GetComponentInParent<Rigidbody>();
 	}
 
-	void Update(){
+	void FixedUpdate(){
 		rb.AddForce(transform.forward * thrust * input.GetAxis("Throttle"));
 		Debug.Log(input.GetAxis("Throttle"));
 	}
