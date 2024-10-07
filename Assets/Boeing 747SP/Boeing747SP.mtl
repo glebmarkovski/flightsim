@@ -1,0 +1,211 @@
+# Blender MTL File: 'Boeing747SP.blend'
+# Material Count: 18
+
+newmtl Cockpit_Glass
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Cockpit Windows.png
+
+newmtl ConeThing
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Korean Air\\Boeing747SP_ConeThing_Normal.png
+map_Kd Textures\\Korean Air\\Boeing747SP_ConeThing_BaseColor.png
+map_Ns Textures\\Korean Air\\Boeing747SP_ConeThing_Roughness.png
+refl Textures\\Korean Air\\Boeing747SP_ConeThing_Metallic.png
+
+newmtl Elevators
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Horizontal Stabilizers.png
+
+newmtl Engine_Cowling
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Korean Air\\Boeing747SP_Engine Cowling_Normal.png
+map_Kd Textures\\Korean Air\\Boeing747SP_Engine Cowling_BaseColor.png
+map_Ns Textures\\Korean Air\\Boeing747SP_Engine Cowling_Roughness.png
+refl Textures\\Korean Air\\Boeing747SP_Engine Cowling_Metallic.png
+
+newmtl FanBlades
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Korean Air\\Boeing747SP_FanBlades_Normal.png
+map_Kd Textures\\Korean Air\\Boeing747SP_FanBlades_BaseColor.png
+map_Ns Textures\\Korean Air\\Boeing747SP_FanBlades_Roughness.png
+refl Textures\\Korean Air\\Boeing747SP_FanBlades_Metallic.png
+
+newmtl Flaps
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Wings.png
+
+newmtl Fuselage
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Fuselage.png
+
+newmtl Horizontal_Stab
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Horizontal Stabilizers.png
+
+newmtl Inner_Gear
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Inner Main Gear.png
+
+newmtl Inner_Landing_Gear_Doors
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Nosegear
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\NoseGear.png
+
+newmtl Outer_gear
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Inner Main Gear.png
+
+newmtl Pylons
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Korean Air\\Boeing747SP_Pylons_Normal.png
+map_Kd Textures\\Korean Air\\Boeing747SP_Pylons_BaseColor.png
+map_Ns Textures\\Korean Air\\Boeing747SP_Pylons_Roughness.png
+refl Textures\\Korean Air\\Boeing747SP_Pylons_Metallic.png
+
+newmtl Spoilers
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Control Surfaces.png
+
+newmtl Vertical_Stabilizer
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Textures\\Korean Air\\Vertical Stabilizer.png
+
+newmtl le_Insides
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Textures\\Korean Air\\Boeing747SP_le Insides_Normal.png
+map_Ns Textures\\Korean Air\\Boeing747SP_le Insides_Roughness.png
+refl Textures\\Korean Air\\Boeing747SP_le Insides_Metallic.png
