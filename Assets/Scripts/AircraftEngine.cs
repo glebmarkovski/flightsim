@@ -14,5 +14,6 @@ public class AircraftEngine : ControllableBehaviour
 
 	void Update(){
 		rb.AddForce(transform.forward * thrust * input.GetAxis("Throttle"));
+		Debug.Log(input.GetAxis("Throttle"));
 	}
 }

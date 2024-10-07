@@ -16,6 +16,8 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 
 	private FlightModelDebug_NonWing debug;
 
+	private Airfoil airfoil;
+
 	void Awake(){
 		rb = GetComponentInParent<Rigidbody>();
 		if(isDebug){
@@ -38,16 +40,17 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 		localVelocity.x = Vector3.Dot(transform.right, velocity);
 		//Debug.Log(localVelocity.x.ToString() + " " + localVelocity.y.ToString() + " " + localVelocity.z.ToString());
 		
-		float alpha = Mathf.Atan2(-localVelocity.y, localVelocity.z);
-		float theta = thetaSource.theta;	
+
+		float alpha = Mathf.Atan2(-Math.Pow(localVelocity.x * localVelocity.x + localVelocity.y * localVelocity.y, 0.5f), localVelocity.z);
+
 		float airspeed = localVelocity.y*localVelocity.y + localVelocity.z * localVelocity.z + localVelocity.x * localVelocity.x;
 
 		Vector3 wingForce = new Vector3();
 		
 		//Debug.Log("Density: " + Air.air.Density(transform.position.y) + " Temp: " + Air.air.Temperature(transform.position.y) + " Pressure: " + Air.air.Pressure(transform.position.y));
 
-		wingForce += airspeed * airfoil.GetCl(alpha, theta) * Air.air.Density(transform.position.y) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
-		wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, theta) * Air.air.Density(transform.position.y) * velocity.normalized;
+		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
+		wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, 0) * Air.air.Density(transform.position.y) * velocity.normalized;
 		wingForce *= area * 0.5f;
 
 		//Debug.DrawRay(transform.position, wingForce*0.00005f);

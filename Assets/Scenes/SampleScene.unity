@@ -1103,10 +1103,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2138544587}
   - {fileID: 252772982}
   - {fileID: 254895501}
   - {fileID: 1523562047}
-  - {fileID: 2138544587}
   - {fileID: 88552690}
   - {fileID: 1059616017}
   m_Father: {fileID: 0}
@@ -5539,7 +5539,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971800066}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d460271e229f655debcdedfa7f4e7a35, type: 3}
   m_Name: 

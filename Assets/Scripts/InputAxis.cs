@@ -31,10 +31,10 @@ public class InputAxis{
 			}
 		}
 		float desiredValue;
-		if (Input.GetKey(pos)){
+		if (active && Input.GetKey(pos)){
 			desiredValue = max;
 		}
-		else if(Input.GetKey(neg)){
+		else if(active && Input.GetKey(neg)){
 			desiredValue = min;
 		}
 		else if(sticky){
