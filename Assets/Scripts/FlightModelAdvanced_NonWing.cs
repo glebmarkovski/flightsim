@@ -14,8 +14,9 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 
 	public bool isDebug;
 
-	private FlightModelDebug_NonWing debug;
+	private FlightModelDebug debug;
 
+	[SerializeField]
 	private Airfoil airfoil;
 
 	void Awake(){
@@ -41,7 +42,11 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 		//Debug.Log(localVelocity.x.ToString() + " " + localVelocity.y.ToString() + " " + localVelocity.z.ToString());
 		
 
-		float alpha = Mathf.Atan2(-Math.Pow(localVelocity.x * localVelocity.x + localVelocity.y * localVelocity.y, 0.5f), localVelocity.z);
+		float alpha = Mathf.Atan2(Mathf.Pow(localVelocity.x * localVelocity.x + localVelocity.y * localVelocity.y, 0.5f), localVelocity.z);
+
+		//Debug.Log(alpha);
+
+		float beta = Mathf.Atan2(-localVelocity.y, -localVelocity.x);
 
 		float airspeed = localVelocity.y*localVelocity.y + localVelocity.z * localVelocity.z + localVelocity.x * localVelocity.x;
 
@@ -49,7 +54,8 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 		
 		//Debug.Log("Density: " + Air.air.Density(transform.position.y) + " Temp: " + Air.air.Temperature(transform.position.y) + " Pressure: " + Air.air.Pressure(transform.position.y));
 
-		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
+		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Sin(beta) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
+		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Cos(beta) * (Quaternion.AngleAxis(90, transform.up) * velocity.normalized);	
 		wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, 0) * Air.air.Density(transform.position.y) * velocity.normalized;
 		wingForce *= area * 0.5f;
 
@@ -69,13 +75,13 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 		if(isDebug){
 			debug.wingForce = wingForce;
 			debug.alpha = alpha;
-			debug.theta = theta;
+			debug.theta = 0;
 			debug.airspeed = Mathf.Pow(airspeed,0.5f);
-			debug.Cl = airfoil.GetCl(alpha,theta);
-			debug.Cd = airfoil.GetCd(alpha,theta);
+			debug.Cl = airfoil.GetCl(alpha,0);
+			debug.Cd = airfoil.GetCd(alpha,0);
 			debug.area = area;
-			debug.lift = area * 0.5f * airspeed * airfoil.GetCl(alpha, theta) * Air.air.Density(transform.position.y);
-			debug.drag = area * 0.5f * airspeed * airfoil.GetCd(alpha, theta) * Air.air.Density(transform.position.y); 	
+			debug.lift = area * 0.5f * airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y);
+			debug.drag = area * 0.5f * airspeed * airfoil.GetCd(alpha, 0) * Air.air.Density(transform.position.y); 	
 		}
 	}
 }

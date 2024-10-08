@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.30598074, g: 0.31744957, b: 0.33962262, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -912,21 +912,21 @@ MonoBehaviour:
     - alpha: 0
       tps:
       - theta: 0
-        c: 0.015
+        c: 0.022
       - theta: 0.5
-        c: 0.06
+        c: 0.1
     - alpha: 0.15
       tps:
       - theta: 0
-        c: 0.019
+        c: 0.024
       - theta: 0.5
-        c: 0.1
+        c: 0.12
     - alpha: 0.22
       tps:
       - theta: 0
-        c: 0.035
+        c: 0.038
       - theta: 0.5
-        c: 0.2
+        c: 0.22
     - alpha: 0.25
       tps:
       - theta: 0
@@ -1446,7 +1446,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9557064, b: 0.8349056, a: 1}
+  m_Color: {r: 1, g: 0.9705189, b: 0.8820755, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2985,7 +2985,7 @@ MonoBehaviour:
       - theta: -0.35
         c: 0.2
       - theta: 0
-        c: 0.04
+        c: 0.15
       - theta: 0.2
         c: 0.12
     - alpha: 0
@@ -2993,25 +2993,25 @@ MonoBehaviour:
       - theta: -0.35
         c: 0.12
       - theta: 0
-        c: 0.012
+        c: 0.022
       - theta: 0.2
-        c: 0.04
-    - alpha: 0.1
+        c: 0.08
+    - alpha: 0.15
       tps:
       - theta: -0.35
         c: 0.12
       - theta: 0
-        c: 0.019
+        c: 0.024
       - theta: 0.2
-        c: 0.06
+        c: 0.1
     - alpha: 0.22
       tps:
       - theta: -0.35
         c: 0.2
       - theta: 0
-        c: 0.035
+        c: 0.038
       - theta: 0.2
-        c: 0.12
+        c: 0.2
     - alpha: 0.25
       tps:
       - theta: -0.35
@@ -3019,7 +3019,7 @@ MonoBehaviour:
       - theta: 0
         c: 0.08
       - theta: 0.2
-        c: 0.25
+        c: 0.3
     - alpha: 0.4
       tps:
       - theta: -0.35
@@ -4292,21 +4292,21 @@ MonoBehaviour:
     - alpha: 0
       tps:
       - theta: 0
-        c: 0.015
+        c: 0.022
       - theta: 0.5
-        c: 0.06
+        c: 0.1
     - alpha: 0.15
       tps:
       - theta: 0
-        c: 0.019
+        c: 0.024
       - theta: 0.5
-        c: 0.1
+        c: 0.12
     - alpha: 0.22
       tps:
       - theta: 0
-        c: 0.035
+        c: 0.038
       - theta: 0.5
-        c: 0.2
+        c: 0.22
     - alpha: 0.25
       tps:
       - theta: 0
@@ -5539,60 +5539,53 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971800066}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d460271e229f655debcdedfa7f4e7a35, type: 3}
+  m_Script: {fileID: 11500000, guid: bbad42f588510b7e2886892d58d32c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: 150
+  area: 300
   stats: {fileID: 0}
+  isDebug: 1
   airfoil:
     apsl:
-    - alpha: -2.3
-      tps:
-      - theta: 0
-        c: 0.4
-    - alpha: -1.57
+    - alpha: 0
       tps:
       - theta: 0
         c: 0
-    - alpha: -0.8
+    - alpha: 0.15
       tps:
       - theta: 0
-        c: -0.4
+        c: 0.1
     - alpha: 0.8
       tps:
       - theta: 0
-        c: 0.4
+        c: 0.3
     - alpha: 1.57
       tps:
       - theta: 0
         c: 0
-    - alpha: 2.3
+    - alpha: 2.35
       tps:
       - theta: 0
-        c: -0.4
+        c: -0.2
+    - alpha: 3.1415
+      tps:
+      - theta: 0
+        c: 0
     apsd:
-    - alpha: -3.14
+    - alpha: 0
       tps:
       - theta: 0
-        c: 0.05
-    - alpha: -1.57
+        c: 0.025
+    - alpha: 0.15
       tps:
       - theta: 0
-        c: 0.9
-    - alpha: -0.1
+        c: 0.035
+    - alpha: 0.3
       tps:
       - theta: 0
-        c: 0.05
-    - alpha: -0.1
-      tps:
-      - theta: 0
-        c: 0.05
-    - alpha: 0.1
-      tps:
-      - theta: 0
-        c: 0.05
+        c: 0.15
     - alpha: 1.57
       tps:
       - theta: 0
@@ -5600,9 +5593,7 @@ MonoBehaviour:
     - alpha: 3.14
       tps:
       - theta: 0
-        c: 0.05
-  thetaSource: {fileID: 1390489028}
-  isDebug: 1
+        c: 0.2
 --- !u!4 &1985978361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8205571511734158357, guid: a7ea77c009aba808b87b50bbde0b2820, type: 3}
@@ -5870,7 +5861,7 @@ MonoBehaviour:
       - theta: -0.35
         c: 0.2
       - theta: 0
-        c: 0.04
+        c: 0.15
       - theta: 0.2
         c: 0.12
     - alpha: 0
@@ -5878,25 +5869,25 @@ MonoBehaviour:
       - theta: -0.35
         c: 0.12
       - theta: 0
-        c: 0.012
+        c: 0.022
       - theta: 0.2
-        c: 0.04
-    - alpha: 0.1
+        c: 0.08
+    - alpha: 0.15
       tps:
       - theta: -0.35
         c: 0.12
       - theta: 0
-        c: 0.019
+        c: 0.024
       - theta: 0.2
-        c: 0.06
+        c: 0.1
     - alpha: 0.22
       tps:
       - theta: -0.35
         c: 0.2
       - theta: 0
-        c: 0.035
+        c: 0.038
       - theta: 0.2
-        c: 0.12
+        c: 0.2
     - alpha: 0.25
       tps:
       - theta: -0.35
@@ -5904,7 +5895,7 @@ MonoBehaviour:
       - theta: 0
         c: 0.08
       - theta: 0.2
-        c: 0.25
+        c: 0.3
     - alpha: 0.4
       tps:
       - theta: -0.35
