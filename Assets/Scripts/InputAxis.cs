@@ -21,6 +21,11 @@ public class InputAxis{
 	public float GetValue(){
 		return val; 
 	}
+
+	public float GetTrim(){
+		return trim; 
+	}
+
 	public void UpdateValue(bool active){
 		if(active){
 			if(Input.GetKey(trimPos)){

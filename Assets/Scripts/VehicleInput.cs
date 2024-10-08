@@ -22,6 +22,15 @@ public class VehicleInput{
 		return 0;
 	}
 
+	public float GetTrim(string name){
+		foreach (InputAxis axis in axes){
+			if (axis.name == name){
+				return axis.GetTrim();
+			}
+		}
+		return 0;
+	}
+
 	public void UpdateAxes(){
 		foreach (InputAxis axis in axes){
 			axis.UpdateValue(active);
