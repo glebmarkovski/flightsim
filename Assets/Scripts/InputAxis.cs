@@ -15,7 +15,8 @@ public class InputAxis{
 	public string neg;
 	public string trimPos;
 	public string trimNeg;
-
+	
+	[SerializeField]
 	private float val;
 
 	public float GetValue(){

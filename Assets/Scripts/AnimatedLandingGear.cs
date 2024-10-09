@@ -26,11 +26,11 @@ public class AnimatedLandingGear : MonoBehaviour
 
 	public void Extend(){
 		anim.Play(extendAnim);
-		Debug.Log("extending");
+//		Debug.Log("extending");
 	}
 
 	public void Retract(){
 		anim.Play(retractAnim);
-		Debug.Log("retracting");
+//		Debug.Log("retracting");
 	}
 }

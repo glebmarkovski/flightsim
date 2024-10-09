@@ -2183,6 +2183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 155
+  span: 68
+  totalArea: 400
+  wingEfficiency: 0.9
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -2302,7 +2305,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 1390489028}
-  isDebug: 1
 --- !u!1 &531175307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,6 +2568,7 @@ MonoBehaviour:
       neg: s
       trimPos: p
       trimNeg: ;
+      val: 0
     - name: Roll
       max: 1
       min: -1
@@ -2577,6 +2580,7 @@ MonoBehaviour:
       neg: a
       trimPos: ''''
       trimNeg: l
+      val: 0
     - name: Yaw
       max: 1
       min: -1
@@ -2588,6 +2592,7 @@ MonoBehaviour:
       neg: q
       trimPos: '['
       trimNeg: o
+      val: 0
     - name: Flaps
       max: 1
       min: 0
@@ -2599,6 +2604,7 @@ MonoBehaviour:
       neg: k
       trimPos: j
       trimNeg: j
+      val: 0
     - name: Throttle
       max: 1
       min: 0
@@ -2610,6 +2616,7 @@ MonoBehaviour:
       neg: left ctrl
       trimPos: j
       trimNeg: j
+      val: 0
     - name: Brake
       max: 1
       min: 0
@@ -2621,11 +2628,16 @@ MonoBehaviour:
       neg: j
       trimPos: j
       trimNeg: j
+      val: 0
     buttons:
     - name: Gear
       isToggle: 1
       val: 1
       key: g
+    - name: Debug
+      isToggle: 1
+      val: 0
+      key: '`'
 --- !u!114 &594332175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3194,6 +3206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 60
+  span: 25
+  totalArea: 120
+  wingEfficiency: 0.8
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -3319,7 +3334,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 1731459341}
-  isDebug: 1
 --- !u!1 &747905437
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,6 +5313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 45
+  span: 68
+  totalArea: 400
+  wingEfficiency: 0.9
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -5444,7 +5461,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 642469384}
-  isDebug: 1
 --- !u!1 &1161728751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,6 +5866,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 100
+  span: 10
+  totalArea: 100
+  wingEfficiency: 0.8
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -5975,7 +5994,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 1024585096}
-  isDebug: 1
 --- !u!1 &1248873109
 GameObject:
   m_ObjectHideFlags: 0
@@ -7725,6 +7743,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 155
+  span: 68
+  totalArea: 400
+  wingEfficiency: 0.9
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -7844,7 +7865,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 314391152}
-  isDebug: 1
 --- !u!1 &1538991073
 GameObject:
   m_ObjectHideFlags: 0
@@ -8025,6 +8045,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 60
+  span: 25
+  totalArea: 120
+  wingEfficiency: 0.8
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -8150,7 +8173,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 769718619}
-  isDebug: 1
 --- !u!1 &1565511002
 GameObject:
   m_ObjectHideFlags: 0
@@ -10239,9 +10261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbad42f588510b7e2886892d58d32c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: 300
+  area: 400
   stats: {fileID: 0}
-  isDebug: 1
   airfoil:
     apsl:
     - alpha: 0
@@ -10672,6 +10693,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area: 45
+  span: 68
+  totalArea: 400
+  wingEfficiency: 0.9
   stats: {fileID: 0}
   airfoil:
     apsl:
@@ -10817,7 +10841,6 @@ MonoBehaviour:
       - theta: 0
         c: 0.3
   thetaSource: {fileID: 1442231467}
-  isDebug: 1
 --- !u!1 &2057460219
 GameObject:
   m_ObjectHideFlags: 0

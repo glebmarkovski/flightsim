@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlightModelAdvanced : MonoBehaviour
+public class FlightModelAdvanced : ControllableBehaviour
 {
 	private Vector3 formerPosition;
 
 	private Rigidbody rb;
 
 	public float area;
+	public float span;	
+	public float totalArea;
+	public float wingEfficiency;
 
 	public AircraftStats stats;
 
@@ -16,22 +19,19 @@ public class FlightModelAdvanced : MonoBehaviour
 
 	public ControlSurface thetaSource;
 
-	public bool isDebug;
-
 	private FlightModelDebug debug;
+
+	private float Cd;
+	private float Cl;
+	private float Cdi;
 
 	void Awake(){
 		rb = GetComponentInParent<Rigidbody>();
-		if(isDebug){
-			debug = GetComponentInChildren<FlightModelDebug>(true);
-		}
+		debug = GetComponentInChildren<FlightModelDebug>(true);
 	}
 
 	void Start(){
 		formerPosition = transform.position;
-		if(isDebug){
-			debug.gameObject.SetActive(true);
-		}
 	}
 
 	void FixedUpdate(){
@@ -50,8 +50,15 @@ public class FlightModelAdvanced : MonoBehaviour
 		
 		//Debug.Log("Density: " + Air.air.Density(transform.position.y) + " Temp: " + Air.air.Temperature(transform.position.y) + " Pressure: " + Air.air.Pressure(transform.position.y));
 
-		wingForce += airspeed * airfoil.GetCl(alpha, theta) * Air.air.Density(transform.position.y) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
-		wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, theta) * Air.air.Density(transform.position.y) * velocity.normalized;
+
+		Cl = airfoil.GetCl(alpha, theta);
+
+		Cd = airfoil.GetCd(alpha, theta);
+
+		Cdi = Cl * Cl / (Mathf.PI * (span * span / totalArea) * wingEfficiency);
+
+		wingForce += airspeed * Cl * Air.air.Density(transform.position.y) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
+		wingForce += -1.0f * airspeed * (Cd + Cdi) * Air.air.Density(transform.position.y) * velocity.normalized;
 		wingForce *= area * 0.5f;
 
 		//Debug.DrawRay(transform.position, wingForce*0.00005f);
@@ -67,16 +74,19 @@ public class FlightModelAdvanced : MonoBehaviour
 
 		//Debug.Log(alpha*180/3.14f);
 		
-		if(isDebug){
+		debug.gameObject.SetActive(input.GetButton("Debug"));
+
+		if(input.GetButton("Debug")){
 			debug.wingForce = wingForce;
 			debug.alpha = alpha;
 			debug.theta = theta;
 			debug.airspeed = Mathf.Pow(airspeed,0.5f);
-			debug.Cl = airfoil.GetCl(alpha,theta);
-			debug.Cd = airfoil.GetCd(alpha,theta);
+			debug.Cl = Cl;
+			debug.Cd = Cd;
+			debug.Cdi = Cdi;
 			debug.area = area;
-			debug.lift = area * 0.5f * airspeed * airfoil.GetCl(alpha, theta) * Air.air.Density(transform.position.y);
-			debug.drag = area * 0.5f * airspeed * airfoil.GetCd(alpha, theta) * Air.air.Density(transform.position.y); 	
+			debug.lift = area * 0.5f * airspeed * Cl * Air.air.Density(transform.position.y);
+			debug.drag = area * 0.5f * airspeed * (Cd+Cdi) * Air.air.Density(transform.position.y); 	
 		}
 	}
 }

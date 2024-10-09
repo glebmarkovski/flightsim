@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlightModelAdvanced_NonWing : MonoBehaviour
+public class FlightModelAdvanced_NonWing : ControllableBehaviour
 {
 	private Vector3 formerPosition;
 
@@ -12,8 +12,6 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 
 	public AircraftStats stats;
 
-	public bool isDebug;
-
 	private FlightModelDebug debug;
 
 	[SerializeField]
@@ -21,16 +19,11 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 
 	void Awake(){
 		rb = GetComponentInParent<Rigidbody>();
-		if(isDebug){
-			debug = GetComponentInChildren<FlightModelDebug>(true);
-		}
+		debug = GetComponentInChildren<FlightModelDebug>();
 	}
 
 	void Start(){
 		formerPosition = transform.position;
-		if(isDebug){
-			debug.gameObject.SetActive(true);
-		}
 	}
 
 	void FixedUpdate(){
@@ -72,7 +65,9 @@ public class FlightModelAdvanced_NonWing : MonoBehaviour
 
 		//Debug.Log(alpha*180/3.14f);
 		
-		if(isDebug){
+		debug.gameObject.SetActive(input.GetButton("Debug"));
+
+		if(input.GetButton("Debug")){
 			debug.wingForce = wingForce;
 			debug.alpha = alpha;
 			debug.theta = 0;
