@@ -21,7 +21,7 @@ public class VehicleCamera : MonoBehaviour
 	}
 
 	private void Update(){
-		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x * Time.deltaTime, Input.GetAxis("Mouse Y") * viewSensitivity.y * Time.deltaTime);
+		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x, Input.GetAxis("Mouse Y") * viewSensitivity.y);
 		view.y = Mathf.Clamp(view.y, -90, 90);
 		transform.rotation = Quaternion.Euler(view.y, view.x, 0);
 

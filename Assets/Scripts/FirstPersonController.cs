@@ -20,6 +20,7 @@ public class FirstPersonController : MonoBehaviour
 		cameraPivot = transform.GetChild(0);
 		yVelocity = 0;
 		view = new Vector2();
+		Application.targetFrameRate = 1000;
 	}
 
 	private void OnEnable(){
@@ -46,7 +47,7 @@ public class FirstPersonController : MonoBehaviour
 			yVelocity = jumpVelocity;
 		}
 
-		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x * Time.deltaTime, Input.GetAxis("Mouse Y") * viewSensitivity.y * Time.deltaTime);
+		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x, Input.GetAxis("Mouse Y") * viewSensitivity.y);
 
 		view.y = Mathf.Clamp(view.y, -90, 90);
 
