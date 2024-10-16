@@ -11,28 +11,28 @@ public class AircraftJetEngine : MonoBehaviour
 	private TankPriorityLevel[] fuel;
 
 	[SerializeField]
-	private Fan fan;
+	private JetEngineFan fan;
 
 	[SerializeField]
-	private Intake intake;
+	private JetEngineExhaust fanExhaust;
 
 	[SerializeField]
-	private Compressor compressor1;
+	private JetEngineCompressor compressor1;
 
 	[SerializeField]
-	private Compressor compressor2;
+	private JetEngineCompressor compressor2;
 
 	[SerializeField]
-	private Combustor combustor;
+	private JetEngineCombustor combustor;
 
 	[SerializeField]
-	private Turbine turbine2;
+	private JetEngineTurbine turbine2;
 
 	[SerializeField]
-	private Turbine turbine1;
+	private JetEngineTurbine turbine1;
 
 	[SerializeField]
-	private Exhaust exhaust;
+	private JetEngineExhaust turbineExhaust;
 
 	[SerializeField]
 	private float n1moi;
@@ -49,15 +49,14 @@ public class AircraftJetEngine : MonoBehaviour
 
 	private void FixedUpdate(){
 		float airspeed = Vector3.Dot(rb.velocity, transform.forward);
-		GasFlow atmosphericGas = new Gas(Air.Pressure(asl), Air.Temperature(asl), airspeed);
-		GasFlow intakeGas = intake.Gas(atmosphericGas, n1);
-		GasFlow fanGas = fan.Gas(intakeGas, n1);
-		GasFlow compressor1Gas = compressor1.Gas(intakeGas, n1);
-		GasFlow compressor2Gas = compressor2.Gas(compressor1Gas, n2);
-		GasFlow combustorGas = combustor.Gas(compressor2Gas);
-		GasFlow turbine2Gas = turbine2.Gas(combustorGas, n2);
-		GasFlow turbine1Gas = turbine1.Gas(turbine2Gas, n1);
-		GasFlow exhaustGas = exhaust.Gas(turbine1Gas, atmosphericGas);
+		JetEngineGasFlow fanGas = fan.Gas(Air.Pressure(), Air.Temperature(), airspeed, n1);
+		JetEngineGasFlow
+		JetEngineGasFlow compressor1Gas = compressor1.Gas(intakeGas, n1);
+		JetEngineGasFlow compressor2Gas = compressor2.Gas(compressor1Gas, n2);
+		JetEngineGasFlow combustorGas = combustor.Gas(compressor2Gas);
+		JetEngineGasFlow turbine2Gas = turbine2.Gas(combustorGas, n2);
+		JetEngineGasFlow turbine1Gas = turbine1.Gas(turbine2Gas, n1);
+		JetEngineGasFlow turbineExhaustGas = turbineExhaust.Gas(turbine1Gas, atmosphericGas);
 
 		thrust = exhaustGas.velocity * exhaustGas.mfr + fanGas.velocity * fanGas.mfr - (intakeGas.pressure - atmosphericGas.pressure) * intake.area; 
 
