@@ -8563,8 +8563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 25
   maxDistance: 150
-  viewSensitivity: {x: 0.5, y: 0.5}
-  zoomSensitivity: 1
+  viewSensitivity: {x: 0.5, y: -0.5}
+  zoomSensitivity: -1.5
 --- !u!1 &1534662880
 GameObject:
   m_ObjectHideFlags: 0
