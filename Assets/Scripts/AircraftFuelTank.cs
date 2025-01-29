@@ -11,7 +11,7 @@ public class AircraftFuelTank : MonoBehaviour
 	[SerializeField]
 	private float density;
 
-	public bool drainFuel(float volume){
+	public bool GetFuel(float volume){
 		if (content > volume){
 			content -= volume;
 			return true;

@@ -36,4 +36,8 @@ public class Air : MonoBehaviour
 	public float Viscosity(float altitude){
 		return 0.00001789f * Mathf.Pow(Temperature(altitude)/288.15f, 0.7f);
 	}
+
+	public float Mach(float altitude){
+		return Mathf.Sqrt(1.4f * 8.314f * Temperature(altitude) / 0.02896f);
+	}
 }
