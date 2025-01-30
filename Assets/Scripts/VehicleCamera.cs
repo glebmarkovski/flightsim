@@ -25,7 +25,7 @@ public class VehicleCamera : MonoBehaviour
 		view.y = Mathf.Clamp(view.y, -90, 90);
 		transform.rotation = Quaternion.Euler(view.y, view.x, 0);
 
-		distance += zoomSensitivity * Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
+		distance += Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
 		distance = Mathf.Clamp(distance, minDistance, maxDistance);
 		vehicleCamera.localPosition = new Vector3(0,0,-distance);
 	}

@@ -4,29 +4,31 @@ using System;
 [Serializable]
 public class CoefficientGradient {
 	[SerializeField]
-	private CoefficientPoint[] cps;
+	private CoefficientPoint[] points;
+
+	public float x;
 
 	public CoefficientGradient(CoefficientPoint[] newCps){
-		cps = newCps;
+		points = newCps;
 	}
 
-	public float GetC(float value){
-		int len = cps.Length;
-		if (value < cps[0].value){
-			return Mathf.Lerp(cps[len-1].c, cps[0].c, (value - (cps[len-1].value-Mathf.PI * 2))/(cps[0].value - (cps[len-1].value - Mathf.PI * 2)));
+	public float GetZ(float y){
+		int len = points.Length;
+		if (y < points[0].y){
+			return Mathf.Lerp(points[len-1].z, points[0].z, (y - (points[len-1].y-Mathf.PI * 2))/(points[0].y - (points[len-1].y - Mathf.PI * 2)));
 		}
-		if (value >= cps[0].value && value < cps[len-1].value){
+		if (y >= points[0].y && y < points[len-1].y){
 			for (int i = 0; i < len - 1; i++){
-				if (value > cps[i+1].value){
+				if (y > points[i+1].y){
 					continue;
 				}
-				if (value >= cps[i].value && value < cps[i+1].value){
-					return Mathf.Lerp(cps[i].c, cps[i+1].c, (value-cps[i].value)/(cps[i+1].value-cps[i].value));
+				if (y >= points[i].y && y < points[i+1].y){
+					return Mathf.Lerp(points[i].z, points[i+1].z, (y-points[i].y)/(points[i+1].y-points[i].y));
 				}
 			}
 		}
-		if(value >= cps[len-1].value){
-			return Mathf.Lerp(cps[len-1].c, cps[0].c, (value - cps[len - 1].value) / (cps[0].value + Mathf.PI * 2 - cps[len-1].value));
+		if(y >= points[len-1].y){
+			return Mathf.Lerp(points[len-1].z, points[0].z, (y - points[len - 1].y) / (points[0].y + Mathf.PI * 2 - points[len-1].y));
 		}
 		Debug.LogWarning("Didn't return a proper Coefficient");
 		return 0;

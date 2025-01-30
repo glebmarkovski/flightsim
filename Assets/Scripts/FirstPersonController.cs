@@ -43,8 +43,9 @@ public class FirstPersonController : MonoBehaviour
 			movement += transform.forward * Input.GetAxis("Vertical") * walkSpeed.y;
 			movement += transform.right * Input.GetAxis("Horizontal") * walkSpeed.x;
 		}
-		if (Input.GetButtonDown("Jump") && controller.isGrounded){
+		if (Input.GetButton("Jump") && controller.isGrounded){
 			yVelocity = jumpVelocity;
+			Debug.Log("aa");
 		}
 
 		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x, Input.GetAxis("Mouse Y") * viewSensitivity.y);
@@ -58,7 +59,7 @@ public class FirstPersonController : MonoBehaviour
 	}
 	private void FixedUpdate(){
 		if (controller.isGrounded && yVelocity < 0){
-			yVelocity = 0;
+			yVelocity = -1f;
 		}
 		else{
 			yVelocity -= g * Time.fixedDeltaTime;
