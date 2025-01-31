@@ -14042,8 +14042,8 @@ GameObject:
   - component: {fileID: 119600249849979287}
   - component: {fileID: 5158399442055749396}
   - component: {fileID: 1701934366079824052}
-  - component: {fileID: 123946554222288145}
   - component: {fileID: 4876480293884479771}
+  - component: {fileID: 985889826097403515}
   m_Layer: 0
   m_Name: Aircraft
   m_TagString: Untagged
@@ -14196,6 +14196,10 @@ MonoBehaviour:
       isToggle: 1
       val: 0
       key: '`'
+    - name: Eject
+      isToggle: 0
+      val: 0
+      key: f
 --- !u!114 &119600249849979287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14237,7 +14241,7 @@ MonoBehaviour:
   dryMass: 180000
   drycom: {x: 0, y: 0, z: -2}
   dryInertiaTensor: {x: 50000000, y: 90000000, z: 10000000}
---- !u!114 &123946554222288145
+--- !u!114 &4876480293884479771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14246,7 +14250,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 9045287963623076676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2703140309
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &985889826097403515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045287963623076676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb803efbe62c34d7baece46c9ffebad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
@@ -14270,23 +14291,6 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
---- !u!114 &4876480293884479771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9045287963623076676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 2703140309
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!1 &9052566909934825579
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class FirstPersonController : MonoBehaviour
+public class FirstPersonController : NetworkBehaviour
 {
 	private CharacterController controller;
 	public Vector2 walkSpeed;
@@ -34,6 +35,9 @@ public class FirstPersonController : MonoBehaviour
 	}
 
 	private void Update(){
+		if(!isLocalPlayer){
+			return;
+		}
 		movement = new Vector3();
 		if (Input.GetButton("Run")){
 			movement += transform.forward * Input.GetAxis("Vertical") * runSpeed.y;
@@ -45,7 +49,6 @@ public class FirstPersonController : MonoBehaviour
 		}
 		if (Input.GetButton("Jump") && controller.isGrounded){
 			yVelocity = jumpVelocity;
-			Debug.Log("aa");
 		}
 
 		view += new Vector2(Input.GetAxis("Mouse X") * viewSensitivity.x, Input.GetAxis("Mouse Y") * viewSensitivity.y);
@@ -58,6 +61,9 @@ public class FirstPersonController : MonoBehaviour
 		//Debug.Log(cameraPivot.eulerAngles.x);
 	}
 	private void FixedUpdate(){
+		if(!isLocalPlayer){
+			return;
+		}
 		if (controller.isGrounded && yVelocity < 0){
 			yVelocity = -1f;
 		}
@@ -66,5 +72,6 @@ public class FirstPersonController : MonoBehaviour
 		}
 		movement += new Vector3(0,yVelocity,0);
 		controller.Move(movement * Time.fixedDeltaTime);	
+		Debug.Log(movement);
 	}
 }

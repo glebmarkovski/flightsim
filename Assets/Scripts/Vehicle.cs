@@ -38,7 +38,7 @@ public class Vehicle : Interactable
 	private void Update(){
 		input.UpdateAxes();
 		input.UpdateButtons();
-		if (driver != null && Input.GetButtonDown("Eject")){
+		if (driver != null && input.GetButtonDown("Eject")){
 			Eject();
 		}
 	}
