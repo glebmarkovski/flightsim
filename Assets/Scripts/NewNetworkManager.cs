@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
+using System.Collections.Generic;
+using System.Linq;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/components/network-manager
@@ -10,6 +12,8 @@ using Mirror;
 
 public class NewNetworkManager : NetworkManager
 {
+    List<PlayerManager> players = new List<PlayerManager>();
+
     // Overrides the base singleton so we don't
     // have to cast to this type everywhere.
     public static new NewNetworkManager singleton => (NewNetworkManager)NetworkManager.singleton;
@@ -142,6 +146,7 @@ public class NewNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         base.OnServerAddPlayer(conn);
+        players.Add(conn.owned.Single().gameObject.GetComponent<PlayerManager>());
     }
 
     /// <summary>

@@ -17,10 +17,15 @@ public class InputAxis{
 	public string trimNeg;
 	
 	[SerializeField]
-	private float val;
+	private float value;
 
 	public float GetValue(){
-		return val; 
+		return value; 
+	}
+
+	public void SetValue(float value)
+	{
+		this.value = value;
 	}
 
 	public float GetTrim(){
@@ -44,11 +49,11 @@ public class InputAxis{
 			desiredValue = min;
 		}
 		else if(sticky){
-			desiredValue = val;
+			desiredValue = value;
 		}
 		else{
 			desiredValue = trim;
 		}
-		val = Mathf.Clamp(val + Mathf.Clamp(desiredValue - val, -sensitivity * Time.deltaTime, sensitivity * Time.deltaTime), min, max);
+		value = Mathf.Clamp(value + Mathf.Clamp(desiredValue - value, -sensitivity * Time.deltaTime, sensitivity * Time.deltaTime), min, max);
 	}
 }

@@ -55,7 +55,7 @@ public class VehicleInput{
 	public bool GetButton(string name){
 		foreach (InputButton button in buttons){
 			if(button.name == name){
-				return button.Value();
+				return button.GetValue();
 			}
 		}
 		return false;

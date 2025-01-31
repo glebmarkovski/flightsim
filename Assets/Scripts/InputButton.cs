@@ -6,11 +6,17 @@ public class InputButton{
 	public bool isToggle;
 	private bool down;
 	[SerializeField]
-	private bool val;
+	private bool value;
 	public string key;
 
-	public bool Value(){
-		return val;
+	public bool GetValue(){
+		return value;
+	}
+
+	public void SetValue(bool value)
+	{
+		down = value && !this.value;
+		this.value = value;
 	}
 
 	public bool ValueDown(){
@@ -23,16 +29,16 @@ public class InputButton{
 				return;
 			}
 			else{
-				val = false;
+				value = false;
 			}
 		}
 		else{
 			down = Input.GetKeyDown(key);
 			if(!isToggle){
-				val = Input.GetKey(key);
+				value = Input.GetKey(key);
 			}
 			if(isToggle & down){
-				val = !val;
+				value = !value;
 			}
 		}
 	}
