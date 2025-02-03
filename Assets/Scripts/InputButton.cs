@@ -13,6 +13,16 @@ public class InputButton{
 		return value;
 	}
 
+	public void ResetValue()
+	{
+		if (isToggle)
+		{
+			return;
+		}
+		value = false;
+		down = false;
+	}
+
 	public void SetValue(bool value)
 	{
 		down = value && !this.value;

@@ -40,4 +40,9 @@ public class Air : MonoBehaviour
 	public float Mach(float altitude){
 		return Mathf.Sqrt(1.4f * 8.314f * Temperature(altitude) / 0.02896f);
 	}
+
+	public float TasToIas(float altitude,float TAS)
+	{
+		return Mach(0) * Mathf.Sqrt(5 * (Mathf.Pow(0.5f * Density(altitude) * TAS * TAS / Pressure(0) + 1, 0.28571428571f) - 1));
+	}
 }

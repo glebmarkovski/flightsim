@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3670378871535470384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371299568551967055}
+  - component: {fileID: 4943229059325767175}
+  - component: {fileID: 2408611734500265791}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &371299568551967055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670378871535470384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4943229059325767175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670378871535470384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28479a6f2c296f49904596cf80380d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  input:
+    axes:
+    - name: Walk
+      max: 1
+      min: -1
+      sensitivity: 4
+      trim: 0
+      trimSensitivity: 0
+      sticky: 0
+      pos: w
+      neg: s
+      trimPos: w
+      trimNeg: s
+      value: 0
+    - name: Strafe
+      max: 1
+      min: -1
+      sensitivity: 4
+      trim: 0
+      trimSensitivity: 0
+      sticky: 0
+      pos: d
+      neg: a
+      trimPos: d
+      trimNeg: a
+      value: 0
+    - name: Pitch
+      max: 1
+      min: -1
+      sensitivity: 2
+      trim: 0
+      trimSensitivity: 0.1
+      sticky: 0
+      pos: w
+      neg: s
+      trimPos: p
+      trimNeg: ;
+      value: 0
+    - name: Roll
+      max: 1
+      min: -1
+      sensitivity: 2
+      trim: 0
+      trimSensitivity: 0.1
+      sticky: 0
+      pos: d
+      neg: a
+      trimPos: ''''
+      trimNeg: l
+      value: 0
+    - name: Yaw
+      max: 1
+      min: -1
+      sensitivity: 2
+      trim: 0
+      trimSensitivity: 0.1
+      sticky: 0
+      pos: e
+      neg: q
+      trimPos: '['
+      trimNeg: o
+      value: 0
+    - name: Flaps
+      max: 1
+      min: 0
+      sensitivity: 0.5
+      trim: 0
+      trimSensitivity: 0
+      sticky: 1
+      pos: i
+      neg: k
+      trimPos: i
+      trimNeg: k
+      value: 0
+    - name: Throttle
+      max: 1
+      min: 0
+      sensitivity: 0.5
+      trim: 0
+      trimSensitivity: 0
+      sticky: 1
+      pos: left shift
+      neg: left ctrl
+      trimPos: left shift
+      trimNeg: left ctrl
+      value: 0
+    - name: Brake
+      max: 1
+      min: 0
+      sensitivity: 0.5
+      trim: 0
+      trimSensitivity: 0
+      sticky: 0
+      pos: b
+      neg: n
+      trimPos: b
+      trimNeg: n
+      value: 0
+    buttons:
+    - name: Jump
+      isToggle: 0
+      value: 0
+      key: space
+    - name: Enter
+      isToggle: 0
+      value: 0
+      key: f
+    - name: Exit
+      isToggle: 0
+      value: 0
+      key: j
+    - name: Gear
+      isToggle: 1
+      value: 0
+      key: g
+    viewSensitivity: {x: 0.5, y: -0.5}
+    zoomSensitivity: -0.1
+  avatarPrefab: {fileID: 513298714797536148, guid: b44f8eed6509f15408d923486d7b396c, type: 3}
+--- !u!114 &2408611734500265791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670378871535470384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 1378746316
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0

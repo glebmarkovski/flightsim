@@ -12,7 +12,29 @@ using System.Linq;
 
 public class NewNetworkManager : NetworkManager
 {
-    List<PlayerManager> players = new List<PlayerManager>();
+    //CLIENT ONLY
+    private string username;
+
+    public string GetUsername() {
+        return username; 
+    }
+
+    List<PlayerManager> players = new();
+
+    public void AddPlayer(PlayerManager player)
+    {
+        players.Add(player);
+    }
+
+    public PlayerManager GetPlayerByUuid(string uuid)
+    {
+        foreach (PlayerManager player in players)
+        {
+            if(player.GetUuid() == uuid) return player;
+        }
+        Debug.LogError("COULDNT FIND PLAYER " + uuid);
+        return null;
+    }
 
     // Overrides the base singleton so we don't
     // have to cast to this type everywhere.
@@ -97,7 +119,8 @@ public class NewNetworkManager : NetworkManager
     /// Called on the server when a scene is completed loaded, when the scene load was initiated by the server with ServerChangeScene().
     /// </summary>
     /// <param name="sceneName">The name of the new scene.</param>
-    public override void OnServerSceneChanged(string sceneName) { }
+    public override void OnServerSceneChanged(string sceneName) {
+    }
 
     /// <summary>
     /// Called from ClientChangeScene immediately before SceneManager.LoadSceneAsync is executed
@@ -106,7 +129,8 @@ public class NewNetworkManager : NetworkManager
     /// <param name="newSceneName">Name of the scene that's about to be loaded</param>
     /// <param name="sceneOperation">Scene operation that's about to happen</param>
     /// <param name="customHandling">true to indicate that scene loading will be handled through overrides</param>
-    public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling) { }
+    public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling) {
+    }
 
     /// <summary>
     /// Called on clients when a scene has completed loaded, when the scene load was initiated by the server.
@@ -146,7 +170,8 @@ public class NewNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         base.OnServerAddPlayer(conn);
-        players.Add(conn.owned.Single().gameObject.GetComponent<PlayerManager>());
+        PlayerManager newPlayer = conn.owned.Single().GetComponent<PlayerManager>();
+        AddPlayer(newPlayer);
     }
 
     /// <summary>
@@ -156,6 +181,21 @@ public class NewNetworkManager : NetworkManager
     /// <param name="conn">Connection from client.</param>
     public override void OnServerDisconnect(NetworkConnectionToClient conn)
     {
+        string uuid = conn.owned.Single().GetComponent<PlayerManager>().GetUuid();
+        foreach(Transform vehicle in GameObject.Find("Vehicles").transform)
+        {
+            if(vehicle.GetComponent<AvatarIdentity>().GetUuid() == uuid)
+            {
+                vehicle.GetComponent<AvatarIdentity>().SetUuid("");
+            }
+        }
+        foreach (Transform avatar in GameObject.Find("Avatars").transform)
+        {
+            if (avatar.GetComponent<AvatarIdentity>().GetUuid() == uuid)
+            {
+                NetworkServer.Destroy(avatar.gameObject);
+            }
+        }
         base.OnServerDisconnect(conn);
     }
 
@@ -193,7 +233,11 @@ public class NewNetworkManager : NetworkManager
     /// Called on clients when disconnected from a server.
     /// <para>This is called on the client when it disconnects from the server. Override this function to decide what happens when the client disconnects.</para>
     /// </summary>
-    public override void OnClientDisconnect() { }
+    public override void OnClientDisconnect() 
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     /// <summary>
     /// Called on clients when a servers tells the client it is no longer ready.

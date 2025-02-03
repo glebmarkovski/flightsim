@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,34 @@ public class FlightModelAdvanced_NonWing : ControllableBehaviour
 
 	private Rigidbody rb;
 
-	public float area;
-
-	public AircraftStats stats;
+	[SerializeField]
+	private float area;
 
 	private FlightModelDebug debug;
 
 	[SerializeField]
 	private Airfoil airfoil;
 
-	void Awake(){
+    [SyncVar]
+    private float Cd;
+    [SyncVar]
+    private float Cl;
+    [SyncVar]
+    private float Cdi;
+    [SyncVar]
+    private float alpha;
+    [SyncVar]
+    private float beta;
+    [SyncVar]
+    private float airspeed;
+    [SyncVar]
+    private Vector3 wingForce;
+    [SyncVar]
+    private Vector3 velocity;
+    [SyncVar]
+    private Vector3 localVelocity;
+
+    void Awake(){
 		rb = GetComponentInParent<Rigidbody>();
 		debug = GetComponentInChildren<FlightModelDebug>();
 	}
@@ -27,47 +46,33 @@ public class FlightModelAdvanced_NonWing : ControllableBehaviour
 	}
 
 	void FixedUpdate(){
-		Vector3 velocity = (transform.position - formerPosition)/Time.fixedDeltaTime;
-		Vector3 localVelocity = new Vector3();
-		localVelocity.z = Vector3.Dot(transform.forward, velocity);
-		localVelocity.y = Vector3.Dot(transform.up, velocity);
-		localVelocity.x = Vector3.Dot(transform.right, velocity);
-		//Debug.Log(localVelocity.x.ToString() + " " + localVelocity.y.ToString() + " " + localVelocity.z.ToString());
-		
+		if (isServer)
+		{
+            velocity = (transform.position - formerPosition) / Time.fixedDeltaTime;
+            localVelocity = new Vector3();
+            localVelocity.z = Vector3.Dot(transform.forward, velocity);
+            localVelocity.y = Vector3.Dot(transform.up, velocity);
+            localVelocity.x = Vector3.Dot(transform.right, velocity);
 
-		float alpha = Mathf.Atan2(Mathf.Pow(localVelocity.x * localVelocity.x + localVelocity.y * localVelocity.y, 0.5f), localVelocity.z);
+            alpha = Mathf.Atan2(Mathf.Pow(localVelocity.x * localVelocity.x + localVelocity.y * localVelocity.y, 0.5f), localVelocity.z);
+            beta = Mathf.Atan2(-localVelocity.y, -localVelocity.x);
+            airspeed = localVelocity.y * localVelocity.y + localVelocity.z * localVelocity.z + localVelocity.x * localVelocity.x;
 
-		//Debug.Log(alpha);
+            wingForce = new Vector3();
 
-		float beta = Mathf.Atan2(-localVelocity.y, -localVelocity.x);
+            wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Sin(beta) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);
+            wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Cos(beta) * (Quaternion.AngleAxis(90, transform.up) * velocity.normalized);
+            wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, 0) * Air.air.Density(transform.position.y) * velocity.normalized;
+            wingForce *= area * 0.5f;
 
-		float airspeed = localVelocity.y*localVelocity.y + localVelocity.z * localVelocity.z + localVelocity.x * localVelocity.x;
+            rb.AddForceAtPosition(wingForce, transform.position);
 
-		Vector3 wingForce = new Vector3();
-		
-		//Debug.Log("Density: " + Air.air.Density(transform.position.y) + " Temp: " + Air.air.Temperature(transform.position.y) + " Pressure: " + Air.air.Pressure(transform.position.y));
+            formerPosition = transform.position;
+        }
 
-		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Sin(beta) * (Quaternion.AngleAxis(-90, transform.right) * velocity.normalized);	
-		wingForce += airspeed * airfoil.GetCl(alpha, 0) * Air.air.Density(transform.position.y) * Mathf.Cos(beta) * (Quaternion.AngleAxis(90, transform.up) * velocity.normalized);	
-		wingForce += -1.0f * airspeed * airfoil.GetCd(alpha, 0) * Air.air.Density(transform.position.y) * velocity.normalized;
-		wingForce *= area * 0.5f;
+		debug.gameObject.SetActive(GlobalDebugSettings.debug);
 
-		//Debug.DrawRay(transform.position, wingForce*0.00005f);
-		//Debug.Log(gameObject.name + " alpha: " + alpha + " Cl: " + airfoil.GetCl(alpha,theta) + " Airspeed: " + Mathf.Pow(airspeed, 0.5f));
-
-		rb.AddForceAtPosition(wingForce, transform.position); 
-		
-		if (stats != null){
-			stats.totalForce += wingForce;
-		}
-
-		formerPosition = transform.position;
-
-		//Debug.Log(alpha*180/3.14f);
-		
-		debug.gameObject.SetActive(input.GetButton("Debug"));
-
-		if(input.GetButton("Debug")){
+		if(GlobalDebugSettings.debug){
 			debug.wingForce = wingForce;
 			debug.alpha = alpha;
 			debug.theta = 0;

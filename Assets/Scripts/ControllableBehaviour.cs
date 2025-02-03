@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ControllableBehaviour : MonoBehaviour
+public class ControllableBehaviour : NetworkBehaviour
 {
-	protected VehicleInput input;
-	public virtual void SetInput(VehicleInput newInput){
+	protected PlayerInput input;
+	public virtual void SetInput(PlayerInput newInput){
 		input = newInput;
 	}
 }

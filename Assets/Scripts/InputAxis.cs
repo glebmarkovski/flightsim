@@ -19,6 +19,15 @@ public class InputAxis{
 	[SerializeField]
 	private float value;
 
+	public void ResetValue()
+	{
+		if (sticky)
+		{
+			return;
+		}
+		value = trim;
+	}
+
 	public float GetValue(){
 		return value; 
 	}
